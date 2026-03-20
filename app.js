@@ -5,6 +5,16 @@ const ANDROID_URL =
 const SUPPORTED_LOCALES = ["zh-CN", "zh-TW", "en", "de", "es", "fr", "pt", "ru"];
 const FALLBACK_LOCALE = "en";
 const STORAGE_KEY = "leegeo-lang";
+const LOCALE_LABELS = {
+  "zh-CN": "简体中文",
+  "zh-TW": "繁體中文",
+  en: "English",
+  de: "Deutsch",
+  es: "Español",
+  fr: "Français",
+  pt: "Português",
+  ru: "Русский",
+};
 
 const localeCache = new Map();
 
@@ -66,22 +76,22 @@ async function loadLocaleDict(locale) {
     return localeCache.get(normalized);
   }
 
-  try {
-    const response = await fetch(`./locales/${normalized}.json`, {
-      cache: "no-cache",
-    });
-    if (!response.ok) {
-      throw new Error(`load locale failed: ${normalized}`);
-    }
-    const dict = await response.json();
-    localeCache.set(normalized, dict);
-    return dict;
-  } catch (error) {
-    if (normalized !== FALLBACK_LOCALE) {
-      return loadLocaleDict(FALLBACK_LOCALE);
-    }
-    throw error;
+  const embeddedLocales = window.__LOCALE_DATA__;
+  if (!embeddedLocales || typeof embeddedLocales !== "object") {
+    throw new Error("locale bundle missing");
   }
+
+  const embeddedDict = embeddedLocales[normalized];
+  if (embeddedDict && typeof embeddedDict === "object") {
+    localeCache.set(normalized, embeddedDict);
+    return embeddedDict;
+  }
+
+  if (normalized !== FALLBACK_LOCALE) {
+    return loadLocaleDict(FALLBACK_LOCALE);
+  }
+
+  throw new Error(`load locale failed: ${normalized}`);
 }
 
 function detectPlatform() {
@@ -143,6 +153,74 @@ function updateHomeDownload(dict) {
   };
 }
 
+function closeLanguageMenu() {
+  const trigger = document.getElementById("language-trigger");
+  const menu = document.getElementById("language-menu");
+  if (!trigger || !menu) {
+    return;
+  }
+
+  menu.hidden = true;
+  trigger.setAttribute("aria-expanded", "false");
+}
+
+function updateLanguageSwitch(locale) {
+  const normalized = normalizeLocale(locale) || FALLBACK_LOCALE;
+  const current = document.getElementById("language-current");
+  const options = document.querySelectorAll(".lang-switch__option");
+
+  if (current) {
+    current.textContent = LOCALE_LABELS[normalized] || normalized;
+  }
+
+  options.forEach((node) => {
+    const isSelected = node.dataset.locale === normalized;
+    node.classList.toggle("is-selected", isSelected);
+    node.setAttribute("aria-selected", isSelected ? "true" : "false");
+  });
+}
+
+function initLanguageSwitch() {
+  const trigger = document.getElementById("language-trigger");
+  const menu = document.getElementById("language-menu");
+  if (!trigger || !menu) {
+    return;
+  }
+
+  const options = menu.querySelectorAll(".lang-switch__option");
+
+  trigger.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpening = menu.hidden;
+    menu.hidden = !isOpening;
+    trigger.setAttribute("aria-expanded", isOpening ? "true" : "false");
+  });
+
+  options.forEach((node) => {
+    node.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const nextLocale = normalizeLocale(node.dataset.locale) || FALLBACK_LOCALE;
+      closeLanguageMenu();
+      setLanguage(nextLocale).catch(() => {
+        window.localStorage.setItem(STORAGE_KEY, nextLocale);
+        updateLanguageSwitch(nextLocale);
+      });
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!menu.hidden && !event.target.closest(".lang-switch")) {
+      closeLanguageMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLanguageMenu();
+    }
+  });
+}
+
 async function setLanguage(locale) {
   const normalized = normalizeLocale(locale) || FALLBACK_LOCALE;
   const dict = await loadLocaleDict(normalized);
@@ -163,33 +241,21 @@ async function setLanguage(locale) {
   }
 
   applyTranslations(dict);
-
-  const select = document.getElementById("language-select");
-  if (select && select.value !== normalized) {
-    select.value = normalized;
-  }
+  updateLanguageSwitch(normalized);
 
   updateHomeDownload(dict);
 }
 
 async function init() {
   const locale = getStoredLanguage();
-  await setLanguage(locale);
-
-  const select = document.getElementById("language-select");
-  if (!select) {
-    return;
-  }
-
-  select.value = locale;
-  select.addEventListener("change", () => {
-    const nextLocale = normalizeLocale(select.value) || FALLBACK_LOCALE;
-    setLanguage(nextLocale).catch(() => {
-      setLanguage(FALLBACK_LOCALE);
-    });
+  initLanguageSwitch();
+  updateLanguageSwitch(locale);
+  await setLanguage(locale).catch(() => {
+    updateLanguageSwitch(locale);
   });
 }
 
 init().catch(() => {
-  setLanguage(FALLBACK_LOCALE);
+  initLanguageSwitch();
+  updateLanguageSwitch(FALLBACK_LOCALE);
 });
