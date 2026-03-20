@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>氧息隐私协议</title>
+    <meta
+      name="description"
+      content="Yosia 隐私协议：本地优先存储、离线可用、数据不上传服务器。"
+    />
+    <link rel="icon" type="image/png" href="./assets/app_icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="privacy">
+    <div class="legal-shell">
+      <header class="masthead">
+        <a class="masthead__brand" href="./index.html" aria-label="Yosia">
+          <img src="./assets/app_icon.png" alt="Yosia App Icon" class="masthead__icon" />
+          <span class="masthead__name" data-i18n="brand.name">氧息</span>
+        </a>
+        <div class="lang-switch" aria-label="Language switch">
+          <select id="language-select" aria-label="Language select">
+            <option value="zh-CN">简体中文</option>
+            <option value="zh-TW">繁體中文</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="pt">Português</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+      </header>
+
+      <main>
+        <section class="legal-hero">
+          <p class="legal-hero__eyebrow" data-i18n="privacy.hero.eyebrow">隐私协议</p>
+          <h1 class="legal-hero__title" data-i18n="privacy.hero.title">你的恢复数据，默认只属于你自己</h1>
+          <p class="legal-hero__lead" data-i18n="privacy.hero.lead">
+            Yosia 是一款本地应用。除非系统商店、支付或法律要求的最小必要信息由相关平台处理，否则我们不会在自己的服务器中保存你的个人恢复记录。
+          </p>
+        </section>
+
+        <section>
+          <div class="legal-list legal-list--policy">
+            <article class="legal-card legal-card--policy">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.local.title">1. 本地存储原则</h2>
+              <p data-i18n="privacy.sections.local.body">
+                你在 App 中填写和生成的昵称、戒断计划、渴望记录、破戒记录、SOS 记录、统计与洞察等信息，默认仅存储在你的手机本地。
+              </p>
+            </article>
+            <article class="legal-card legal-card--policy">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.server.title">2. 我们不保存你的恢复数据</h2>
+              <p data-i18n="privacy.sections.server.body">
+                我们不会把上述恢复数据上传到我们自有的服务器，也不会建立一个由我们代为托管你历史记录的云端数据库。
+              </p>
+            </article>
+            <article class="legal-card legal-card--policy">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.offline.title">3. 支持离线使用</h2>
+              <p data-i18n="privacy.sections.offline.body">
+                由于核心数据保存在本地，App 在无网络环境下仍可继续记录、查看和管理你的主要恢复内容。
+              </p>
+            </article>
+            <article class="legal-card legal-card--policy">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.control.title">4. 数据控制权归你所有</h2>
+              <p data-i18n="privacy.sections.control.body">
+                你对设备中的数据拥有直接控制权。你可以自行保留设备、删除 App 或清除设备数据，这些操作会直接影响本地数据是否继续存在。
+              </p>
+            </article>
+            <article class="legal-card legal-card--policy legal-card--warning">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.loss.title">5. 卸载后的数据不可恢复</h2>
+              <p data-i18n="privacy.sections.loss.body">
+                正是因为我们坚持绝对的隐私保护和本地优先策略，当你卸载 App、清除 App 数据、恢复出厂设置或更换且未迁移旧设备时，相关数据可能会被永久删除，且无法从我们的服务器恢复。
+              </p>
+            </article>
+            <article class="legal-card legal-card--policy legal-card--warning">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.liability.title">6. 关于数据丢失责任</h2>
+              <p data-i18n="privacy.sections.liability.body">
+                对于因你主动卸载 App、删除本地数据、设备损坏、系统重装、设备丢失或其他非我们控制范围内原因导致的数据丢失，我们不承担恢复责任或补偿责任。请你在理解本地存储特性的基础上自行决定是否继续使用。
+              </p>
+            </article>
+            <article class="legal-card legal-card--policy legal-card--full">
+              <h2 class="legal-card__title" data-i18n="privacy.sections.accept.title">7. 继续使用即表示理解并接受</h2>
+              <p data-i18n="privacy.sections.accept.body">
+                当你下载、安装或继续使用 Yosia，即视为你已经阅读并理解上述隐私说明，接受本地优先、不可云端恢复的数据管理方式。
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
