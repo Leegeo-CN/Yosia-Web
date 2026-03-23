@@ -2,7 +2,7 @@ const IOS_URL = "https://apps.apple.com/app/id1234567890";
 const ANDROID_URL =
   "https://play.google.com/store/apps/details?id=com.example.yosia";
 
-const SUPPORTED_LOCALES = ["zh-CN", "zh-TW", "en", "de", "es", "fr", "pt", "ru"];
+const SUPPORTED_LOCALES = ["zh-CN", "zh-TW", "en", "de", "es", "fr", "pt", "ru", "ja", "ko"];
 const FALLBACK_LOCALE = "en";
 const STORAGE_KEY = "leegeo-lang";
 const QUERY_KEY = "lang";
@@ -15,6 +15,8 @@ const LOCALE_LABELS = {
   fr: "Français",
   pt: "Português",
   ru: "Русский",
+  ja: "日本語",
+  ko: "한국어",
 };
 
 const localeCache = new Map();
