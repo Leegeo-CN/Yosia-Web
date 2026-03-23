@@ -5,6 +5,7 @@ const ANDROID_URL =
 const SUPPORTED_LOCALES = ["zh-CN", "zh-TW", "en", "de", "es", "fr", "pt", "ru"];
 const FALLBACK_LOCALE = "en";
 const STORAGE_KEY = "leegeo-lang";
+const QUERY_KEY = "lang";
 const LOCALE_LABELS = {
   "zh-CN": "简体中文",
   "zh-TW": "繁體中文",
@@ -17,6 +18,17 @@ const LOCALE_LABELS = {
 };
 
 const localeCache = new Map();
+
+function toExternalLocale(locale) {
+  const normalized = normalizeLocale(locale) || FALLBACK_LOCALE;
+  if (normalized === "zh-CN") {
+    return "zh";
+  }
+  if (normalized === "zh-TW") {
+    return "zh_Hant";
+  }
+  return normalized;
+}
 
 function normalizeLocale(input) {
   if (!input || typeof input !== "string") {
@@ -49,13 +61,17 @@ function normalizeLocale(input) {
   return null;
 }
 
+function getQueryLanguage() {
+  const params = new URLSearchParams(window.location.search);
+  return normalizeLocale(params.get(QUERY_KEY));
+}
+
 function getStoredLanguage() {
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  const normalizedStored = normalizeLocale(stored);
-  if (normalizedStored) {
-    return normalizedStored;
-  }
+  return normalizeLocale(stored);
+}
 
+function getSystemLanguage() {
   const candidates = Array.isArray(navigator.languages) && navigator.languages.length > 0
     ? navigator.languages
     : [navigator.language || ""];
@@ -68,6 +84,20 @@ function getStoredLanguage() {
   }
 
   return FALLBACK_LOCALE;
+}
+
+function getPreferredLanguage() {
+  const queryLocale = getQueryLanguage();
+  if (queryLocale) {
+    return queryLocale;
+  }
+
+  const storedLocale = getStoredLanguage();
+  if (storedLocale) {
+    return storedLocale;
+  }
+
+  return getSystemLanguage();
 }
 
 async function loadLocaleDict(locale) {
@@ -153,6 +183,26 @@ function updateHomeDownload(dict) {
   };
 }
 
+function updateLocalizedLinks(locale) {
+  const externalLocale = toExternalLocale(locale);
+  const homeLink = document.querySelector(".masthead__brand");
+  const privacyLink = document.querySelector(".privacy-architecture__actions a");
+
+  if (homeLink) {
+    homeLink.href = `./index.html?${QUERY_KEY}=${encodeURIComponent(externalLocale)}`;
+  }
+
+  if (privacyLink) {
+    privacyLink.href = `./privacy.html?${QUERY_KEY}=${encodeURIComponent(externalLocale)}`;
+  }
+}
+
+function syncLanguageQuery(locale) {
+  const url = new URL(window.location.href);
+  url.searchParams.set(QUERY_KEY, toExternalLocale(locale));
+  window.history.replaceState({}, "", url);
+}
+
 function closeLanguageMenu() {
   const trigger = document.getElementById("language-trigger");
   const menu = document.getElementById("language-menu");
@@ -227,6 +277,7 @@ async function setLanguage(locale) {
 
   document.documentElement.lang = normalized;
   window.localStorage.setItem(STORAGE_KEY, normalized);
+  syncLanguageQuery(normalized);
 
   if (document.body.dataset.page === "home") {
     document.title =
@@ -242,20 +293,23 @@ async function setLanguage(locale) {
 
   applyTranslations(dict);
   updateLanguageSwitch(normalized);
+  updateLocalizedLinks(normalized);
 
   updateHomeDownload(dict);
 }
 
 async function init() {
-  const locale = getStoredLanguage();
+  const locale = getPreferredLanguage();
   initLanguageSwitch();
   updateLanguageSwitch(locale);
   await setLanguage(locale).catch(() => {
     updateLanguageSwitch(locale);
+    updateLocalizedLinks(locale);
   });
 }
 
 init().catch(() => {
   initLanguageSwitch();
   updateLanguageSwitch(FALLBACK_LOCALE);
+  updateLocalizedLinks(FALLBACK_LOCALE);
 });
