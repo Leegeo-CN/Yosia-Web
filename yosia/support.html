@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>氧息帮助与支持</title>
+    <meta
+      name="description"
+      content="Yosia 帮助与支持：常见问题、非医学声明与联系方式。"
+    />
+    <link rel="icon" type="image/png" href="./assets/app_icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="support">
+    <div class="legal-shell">
+      <header class="masthead">
+        <a class="masthead__brand" href="./index.html" aria-label="Yosia">
+          <img src="./assets/app_icon.png" alt="Yosia App Icon" class="masthead__icon" />
+          <span class="masthead__name" data-i18n="brand.name">氧息</span>
+        </a>
+        <div class="lang-switch" aria-label="Language switch">
+          <button
+            id="language-trigger"
+            class="lang-switch__trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            aria-label="Language select"
+          >
+            <span id="language-current">简体中文</span>
+          </button>
+          <ul id="language-menu" class="lang-switch__menu" role="listbox" hidden>
+            <li><button type="button" class="lang-switch__option" data-locale="zh-CN">简体中文</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="zh-TW">繁體中文</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="en">English</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="de">Deutsch</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="es">Español</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="fr">Français</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="pt">Português</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="ru">Русский</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="ja">日本語</button></li>
+            <li><button type="button" class="lang-switch__option" data-locale="ko">한국어</button></li>
+          </ul>
+        </div>
+      </header>
+
+      <main>
+        <section class="legal-hero">
+          <p class="legal-hero__eyebrow" data-i18n="support.hero.eyebrow">帮助与支持</p>
+          <h1 class="legal-hero__title" data-i18n="support.hero.title">帮助与支持</h1>
+          <p class="legal-hero__lead" data-i18n="support.hero.lead">
+            了解应用使用方式、数据存储策略、统计偏差原因与支持联系方式。
+          </p>
+        </section>
+
+        <section>
+          <div class="legal-list">
+            <article class="legal-card">
+              <h2 class="legal-card__title" data-i18n="support.faq.title">常见问题</h2>
+              <h3 data-i18n="support.faq.q1">如何使用这个应用？</h3>
+              <p data-i18n="support.faq.a1">
+                记录渴望、破戒和 SOS 后，应用会基于你的目标与开始日期更新进度、统计和勋章。
+              </p>
+              <h3 data-i18n="support.faq.q2">我的数据存在哪里？</h3>
+              <p data-i18n="support.faq.a2">
+                除应用商店、支付系统或法律要求涉及的最少信息外，你在应用内记录的大部分恢复数据默认保存在本机设备中。
+              </p>
+              <h3 data-i18n="support.faq.q3">为什么我的数据看起来不够准确？</h3>
+              <p data-i18n="support.faq.a3">
+                应用内的估算依赖你当前设置的计划和基线数据。如果你的日均使用量、单位或戒断计划与真实情况不一致，请进入设置修改计划，并按真实基线更新相关数据，这样进度、节省金额和恢复估算会更贴近实际。
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h2 class="legal-card__title" data-i18n="support.disclaimer.title">非医学声明</h2>
+              <p data-i18n="support.disclaimer.one">
+                本应用用于习惯记录、自我观察和行为支持，不提供医疗诊断、治疗或处方建议。
+              </p>
+              <p data-i18n="support.disclaimer.two">
+                恢复进度、健康变化、依赖下降和相关洞察均为基于公开资料及你的记录所做的估算，仅供参考，不代表医学检验结果。
+              </p>
+              <p data-i18n="support.disclaimer.three">
+                如出现明显身体不适、持续戒断反应或心理危机，请及时咨询医生或专业机构；如遇紧急情况，请立即联系当地急救服务。
+              </p>
+            </article>
+
+            <article class="legal-card">
+              <h2 class="legal-card__title" data-i18n="support.contact.title">联系方式</h2>
+              <p data-i18n="support.contact.body">
+                如果你想反馈问题、提出建议或联系支持，请发送邮件至：
+              </p>
+              <p>
+                <a href="mailto:leegeo@sina.com">leegeo@sina.com</a>
+              </p>
+              <div class="hero-lab__actions">
+                <a class="store-button" href="./privacy.html" data-localized-path="./privacy.html" data-i18n="support.contact.privacyLink">
+                  阅读隐私协议
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./locales.bundle.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

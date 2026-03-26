@@ -1,4 +1,4 @@
-const IOS_URL = "https://apps.apple.com/app/id1234567890";
+const IOS_URL = "https://apps.apple.com/app/id6761084350";
 const ANDROID_URL =
   "https://play.google.com/store/apps/details?id=com.example.yosia";
 
@@ -188,15 +188,19 @@ function updateHomeDownload(dict) {
 function updateLocalizedLinks(locale) {
   const externalLocale = toExternalLocale(locale);
   const homeLink = document.querySelector(".masthead__brand");
-  const privacyLink = document.querySelector(".privacy-architecture__actions a");
+  const localizedLinks = document.querySelectorAll("[data-localized-path]");
 
   if (homeLink) {
     homeLink.href = `./index.html?${QUERY_KEY}=${encodeURIComponent(externalLocale)}`;
   }
 
-  if (privacyLink) {
-    privacyLink.href = `./privacy.html?${QUERY_KEY}=${encodeURIComponent(externalLocale)}`;
-  }
+  localizedLinks.forEach((link) => {
+    const targetPath = link.getAttribute("data-localized-path");
+    if (!targetPath) {
+      return;
+    }
+    link.href = `${targetPath}?${QUERY_KEY}=${encodeURIComponent(externalLocale)}`;
+  });
 }
 
 function syncLanguageQuery(locale) {
@@ -291,6 +295,11 @@ async function setLanguage(locale) {
       normalized === "zh-CN" || normalized === "zh-TW"
         ? "氧息隐私协议"
         : "Yosia Privacy Policy";
+  } else if (document.body.dataset.page === "support") {
+    document.title =
+      normalized === "zh-CN" || normalized === "zh-TW"
+        ? "氧息帮助与支持"
+        : "Yosia Help & Support";
   }
 
   applyTranslations(dict);
