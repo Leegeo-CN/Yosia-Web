@@ -95,7 +95,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "Bei deutlichen körperlichen Beschwerden, anhaltenden Entzugsreaktionen oder psychischer Krise wende dich bitte zeitnah an medizinische Fachkräfte. In Notfällen kontaktiere sofort den örtlichen Notdienst.",
     "support.contact.title": "Kontakt",
     "support.contact.body": "Wenn du Probleme melden, Vorschläge einreichen oder den Support kontaktieren möchtest, schreibe bitte an:",
-    "support.contact.privacyLink": "Datenschutzrichtlinie lesen"
+    "support.contact.privacyLink": "Datenschutzrichtlinie lesen",
+    "home.modules.support.button": "Hilfe & Support"
   },
   "en": {
     "brand.name": "Yosia",
@@ -193,7 +194,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "If you experience significant physical discomfort, persistent withdrawal reactions, or psychological crisis, consult a doctor or professional service promptly. In emergencies, contact local emergency services immediately.",
     "support.contact.title": "Contact",
     "support.contact.body": "If you want to report issues, share suggestions, or contact support, please email:",
-    "support.contact.privacyLink": "Read Privacy Policy"
+    "support.contact.privacyLink": "Read Privacy Policy",
+    "home.modules.support.button": "Help & Support"
   },
   "es": {
     "brand.name": "Yosia",
@@ -291,7 +293,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "Si presentas malestar físico evidente, abstinencia persistente o crisis psicológica, consulta cuanto antes con profesionales. En emergencias, contacta de inmediato a los servicios locales.",
     "support.contact.title": "Contacto",
     "support.contact.body": "Si quieres reportar problemas, proponer mejoras o contactar soporte, escribe a:",
-    "support.contact.privacyLink": "Leer política de privacidad"
+    "support.contact.privacyLink": "Leer política de privacidad",
+    "home.modules.support.button": "Ayuda y Soporte"
   },
   "fr": {
     "brand.name": "Yosia",
@@ -389,7 +392,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "En cas d’inconfort physique marqué, de réactions de sevrage persistantes ou de crise psychologique, consulte rapidement un professionnel. En urgence, contacte immédiatement les secours locaux.",
     "support.contact.title": "Contact",
     "support.contact.body": "Pour signaler un problème, proposer une amélioration ou contacter le support, écris à :",
-    "support.contact.privacyLink": "Lire la politique de confidentialité"
+    "support.contact.privacyLink": "Lire la politique de confidentialité",
+    "home.modules.support.button": "Aide et Support"
   },
   "pt": {
     "brand.name": "Yosia",
@@ -487,7 +491,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "Se houver desconforto físico evidente, abstinência persistente ou crise psicológica, procure médicos ou profissionais especializados o quanto antes. Em emergência, contate imediatamente o serviço local.",
     "support.contact.title": "Contato",
     "support.contact.body": "Se você quiser relatar problemas, enviar sugestões ou falar com o suporte, envie e-mail para:",
-    "support.contact.privacyLink": "Ler política de privacidade"
+    "support.contact.privacyLink": "Ler política de privacidade",
+    "home.modules.support.button": "Ajuda e Suporte"
   },
   "ru": {
     "brand.name": "Yosia",
@@ -585,7 +590,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "При выраженном физическом дискомфорте, устойчивых реакциях отмены или психологическом кризисе своевременно обратитесь к врачу или специалистам. В экстренной ситуации немедленно свяжитесь с местной службой спасения.",
     "support.contact.title": "Контакты",
     "support.contact.body": "Если вы хотите сообщить о проблеме, предложить улучшение или связаться с поддержкой, напишите на:",
-    "support.contact.privacyLink": "Открыть политику конфиденциальности"
+    "support.contact.privacyLink": "Открыть политику конфиденциальности",
+    "home.modules.support.button": "Помощь и Поддержка"
   },
   "zh-CN": {
     "brand.name": "氧息",
@@ -683,7 +689,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "如出现明显身体不适、持续戒断反应或心理危机，请及时咨询医生或专业机构；如遇紧急情况，请立即联系当地急救服务。",
     "support.contact.title": "联系方式",
     "support.contact.body": "如果你想反馈问题、提出建议或联系支持，请发送邮件至：",
-    "support.contact.privacyLink": "阅读隐私协议"
+    "support.contact.privacyLink": "阅读隐私协议",
+    "home.modules.support.button": "帮助与支持"
   },
   "zh-TW": {
     "brand.name": "氧息",
@@ -781,7 +788,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "如出現明顯身體不適、持續戒斷反應或心理危機，請及時諮詢醫生或專業機構；如遇緊急情況，請立即聯繫當地急救服務。",
     "support.contact.title": "聯絡方式",
     "support.contact.body": "如果你想回報問題、提出建議或聯絡支援，請發送郵件至：",
-    "support.contact.privacyLink": "閱讀隱私協議"
+    "support.contact.privacyLink": "閱讀隱私協議",
+    "home.modules.support.button": "幫助與支援"
   },
   "ja": {
     "brand.name": "Yosia",
@@ -879,7 +887,8 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "明らかな身体的不調、持続する離脱反応、または心理的危機がある場合は、速やかに医師や専門機関へ相談してください。緊急時は直ちに地域の救急サービスへ連絡してください。",
     "support.contact.title": "お問い合わせ",
     "support.contact.body": "不具合報告、提案、サポート連絡をご希望の場合は、次のメールアドレスへご連絡ください：",
-    "support.contact.privacyLink": "プライバシーポリシーを読む"
+    "support.contact.privacyLink": "プライバシーポリシーを読む",
+    "home.modules.support.button": "ヘルプとサポート"
   },
   "ko": {
     "brand.name": "Yosia",
@@ -977,6 +986,7 @@ window.__LOCALE_DATA__ = {
     "support.disclaimer.three": "뚜렷한 신체 불편, 지속적인 금단 반응, 심리적 위기가 나타나면 즉시 의사 또는 전문기관에 상담하세요. 응급 상황에서는 즉시 지역 응급 서비스에 연락하세요.",
     "support.contact.title": "문의",
     "support.contact.body": "문제 제보, 제안 전달, 지원 문의를 원하시면 아래 메일로 연락해 주세요:",
-    "support.contact.privacyLink": "개인정보 처리방침 보기"
+    "support.contact.privacyLink": "개인정보 처리방침 보기",
+    "home.modules.support.button": "도움말 및 지원"
   }
 };
